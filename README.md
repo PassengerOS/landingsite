@@ -14,6 +14,10 @@ npm run dev
 
 ## Deployment
 
+### Vercel Deployment
+
+This site is optimized for deployment on Vercel with automatic builds from GitHub.
+
 ### VPS Deployment (Vultr)
 
 This site is configured for deployment to a Vultr VPS with Nginx.
