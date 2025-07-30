@@ -174,7 +174,11 @@ export default function PlasmaWave({
 
     const gl = renderer.gl;
     gl.clearColor(0, 0, 0, 0);
-    containerRef.current.appendChild(gl.canvas);
+
+    const currentContainer = containerRef.current;
+    if (currentContainer) {
+      currentContainer.appendChild(gl.canvas);
+    }
 
     const camera = new Camera(gl);
     const scene = new Transform();
@@ -215,10 +219,12 @@ export default function PlasmaWave({
     };
     resize();
     const ro = new ResizeObserver(resize);
-    ro.observe(containerRef.current);
+    if (containerRef.current) {
+      ro.observe(containerRef.current);
+    }
 
-    let rafId;
-    const loop = now => {
+    let rafId: number;
+    const loop = (now: number) => {
       const {
         xOffset: xOff,
         yOffset: yOff,
